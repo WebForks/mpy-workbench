@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {
+      "id": "ESP32C6",
+      "aliases": [
+        "ESP32C6",
+        "ESP32-C6"
+      ],
+      "chip": "esp32c6",
+      "flashMode": "dio",
+      "flashFreq": "80m",
+      "offset": "0x0",
+      "url": "https://micropython.org/resources/firmware/ESP32_GENERIC_C6-20250911-v1.26.1.bin"
+    }
+  ]
+}

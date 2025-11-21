@@ -57,7 +57,8 @@ export class ActionsTree implements vscode.TreeDataProvider<ActionNode> {
       { id: "openRepl", label: "Open Repl", command: "microPythonWorkBench.openRepl" },
       { id: "stop", label: "Stop", command: "microPythonWorkBench.stop" },
       { id: "softReset", label: "Soft Reset", command: "microPythonWorkBench.softReset" },
-      { id: "sendCtrlC", label: "Interrupt", command: "microPythonWorkBench.serialSendCtrlC" }
+      { id: "sendCtrlC", label: "Interrupt", command: "microPythonWorkBench.serialSendCtrlC" },
+      { id: "flashMicroPython", label: "Flash MicroPython (auto-detect)", command: "microPythonWorkBench.flashMicroPython" }
     ];
   }
 }

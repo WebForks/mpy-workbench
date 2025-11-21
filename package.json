@@ -195,6 +195,10 @@
         "icon": "$(file-directory)"
       },
       {
+        "command": "microPythonWorkBench.flashMicroPython",
+        "title": "MicroPython WorkBench: Flash MicroPython Firmware"
+      },
+      {
         "command": "microPythonWorkBench.syncFileLocalToBoard",
         "title": "MicroPython WorkBench: Sync File Local → Board",
         "icon": "$(cloud-upload)"
@@ -317,6 +321,11 @@
           "command": "microPythonWorkBench.openReplFromView",
           "when": "view == microPythonWorkBenchActionsView",
           "group": "navigation@1"
+        },
+        {
+          "command": "microPythonWorkBench.flashMicroPython",
+          "when": "view == microPythonWorkBenchActionsView",
+          "group": "navigation@9"
         },
         {
           "command": "microPythonWorkBench.serialSendCtrlC",
