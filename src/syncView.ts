@@ -19,10 +19,10 @@ export class SyncTree implements vscode.TreeDataProvider<SyncActionNode> {
   getTreeItemForAction(element: SyncActionNode): vscode.TreeItem {
     const item = new vscode.TreeItem(element.label, vscode.TreeItemCollapsibleState.None);
     if (element.id === "toggleAutoSync") {
-      item.command = { command: "microPythonHelper.toggleWorkspaceAutoSync", title: element.label };
+      item.command = { command: "microPythonWorkBench.toggleWorkspaceAutoSync", title: element.label };
       item.iconPath = new vscode.ThemeIcon("sync");
     } else {
-      item.command = { command: "microPythonHelper.runFromView", title: element.label, arguments: [element.command] };
+      item.command = { command: "microPythonWorkBench.runFromView", title: element.label, arguments: [element.command] };
       if (element.id === "baseline") item.iconPath = new vscode.ThemeIcon("cloud-upload");
       if (element.id === "baselineFromBoard") item.iconPath = new vscode.ThemeIcon("cloud-download");
       if (element.id === "checkDiffs") item.iconPath = new vscode.ThemeIcon("diff");
@@ -44,18 +44,18 @@ export class SyncTree implements vscode.TreeDataProvider<SyncActionNode> {
           : {};
         const enabled = typeof cfg.autoSyncOnSave === 'boolean'
           ? cfg.autoSyncOnSave
-          : vscode.workspace.getConfiguration().get<boolean>('microPythonHelper.autoSyncOnSave', false);
+          : vscode.workspace.getConfiguration().get<boolean>('microPythonWorkBench.autoSyncOnSave', false);
         autoSyncLabel = enabled ? 'AutoSync: ON (click to disable)' : 'AutoSync: OFF (click to enable)';
       }
     } catch {}
     return [
-      { id: "toggleAutoSync", label: autoSyncLabel, command: "microPythonHelper.toggleWorkspaceAutoSync" },
-      { id: "baseline", label: "Upload all files (Local → Board)", command: "microPythonHelper.syncBaseline" },
-      { id: "baselineFromBoard", label: "Download all files (Board → Local)", command: "microPythonHelper.syncBaselineFromBoard" },
-      { id: "checkDiffs", label: "Check for differences (local vs board)", command: "microPythonHelper.checkDiffs" },
-      { id: "syncDiffsLocalToBoard", label: "Sync changed Files Local → Board", command: "microPythonHelper.syncDiffsLocalToBoard" },
-      { id: "syncDiffsBoardToLocal", label: "Sync changed Files Board → Local", command: "microPythonHelper.syncDiffsBoardToLocal" },
-      { id: "deleteAllBoard", label: "Delete ALL files on Board", command: "microPythonHelper.deleteAllBoard" }
+      { id: "toggleAutoSync", label: autoSyncLabel, command: "microPythonWorkBench.toggleWorkspaceAutoSync" },
+      { id: "baseline", label: "Upload all files (Local → Board)", command: "microPythonWorkBench.syncBaseline" },
+      { id: "baselineFromBoard", label: "Download all files (Board → Local)", command: "microPythonWorkBench.syncBaselineFromBoard" },
+      { id: "checkDiffs", label: "Check for differences (local vs board)", command: "microPythonWorkBench.checkDiffs" },
+      { id: "syncDiffsLocalToBoard", label: "Sync changed Files Local → Board", command: "microPythonWorkBench.syncDiffsLocalToBoard" },
+      { id: "syncDiffsBoardToLocal", label: "Sync changed Files Board → Local", command: "microPythonWorkBench.syncDiffsBoardToLocal" },
+      { id: "deleteAllBoard", label: "Delete ALL files on Board", command: "microPythonWorkBench.deleteAllBoard" }
     ];
   }
 }

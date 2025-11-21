@@ -1,9 +1,9 @@
 {
-  "name": "MicroPython-Helper",
+  "name": "MicroPython-WorkBench",
   "icon": "media/logo.png",
-  "displayName": "MicroPython-Helper",
+  "displayName": "MicroPython-WorkBench",
   "description": "Fork of MPY-WorkBench to fix bugs and issues.  Browse and manage MicroPython files on ESP32 and similar boards via mpremote.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "WebForks",
   "engines": {
     "vscode": "^1.84.0"
@@ -45,16 +45,16 @@
   "contributes": {
     "viewsWelcome": [
       {
-        "view": "microPythonHelperFsView",
-        "contents": "No serial port selected.\n\n[Select Serial Port](command:microPythonHelper.pickPort)",
-        "when": "!microPythonHelper.hasPort"
+        "view": "microPythonWorkBenchFsView",
+        "contents": "No serial port selected.\n\n[Select Serial Port](command:microPythonWorkBench.pickPort)",
+        "when": "!microPythonWorkBench.hasPort"
       }
     ],
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "microPythonHelperFs",
-          "title": "MicroPython Helper",
+          "id": "microPythonWorkBenchFs",
+          "title": "MicroPython WorkBench",
           "icon": "./media/activitybar.svg"
         }
       ]
@@ -64,19 +64,19 @@
       "./media/esp32fs.css"
     ],
     "views": {
-      "microPythonHelperFs": [
+      "microPythonWorkBenchFs": [
         {
-          "id": "microPythonHelperFsView",
+          "id": "microPythonWorkBenchFsView",
           "name": "Files",
           "icon": "$(files)"
         },
         {
-          "id": "microPythonHelperActionsView",
+          "id": "microPythonWorkBenchActionsView",
           "name": "Board Actions",
           "icon": "$(tools)"
         },
         {
-          "id": "microPythonHelperSyncView",
+          "id": "microPythonWorkBenchSyncView",
           "name": "Sync Files",
           "icon": "$(sync)"
         }
@@ -84,374 +84,374 @@
     },
     "commands": [
       {
-        "command": "microPythonHelper.refresh",
-        "title": "MicroPython Helper: Refresh",
+        "command": "microPythonWorkBench.refresh",
+        "title": "MicroPython WorkBench: Refresh",
         "icon": "$(refresh)"
       },
       {
-        "command": "microPythonHelper.openFile",
-        "title": "MicroPython Helper: Open File from board"
+        "command": "microPythonWorkBench.openFile",
+        "title": "MicroPython WorkBench: Open File from board"
       },
       {
-        "command": "microPythonHelper.uploadActiveFile",
-        "title": "MicroPython Helper: Upload Active File"
+        "command": "microPythonWorkBench.uploadActiveFile",
+        "title": "MicroPython WorkBench: Upload Active File"
       },
       {
-        "command": "microPythonHelper.newFileBoardAndLocal",
-        "title": "MicroPython Helper: New File (Board + Local)",
+        "command": "microPythonWorkBench.newFileBoardAndLocal",
+        "title": "MicroPython WorkBench: New File (Board + Local)",
         "icon": "$(new-file)"
       },
       {
-        "command": "microPythonHelper.newFileInTree",
-        "title": "MicroPython Helper: New File Here",
+        "command": "microPythonWorkBench.newFileInTree",
+        "title": "MicroPython WorkBench: New File Here",
         "icon": "$(new-file)"
       },
       {
-        "command": "microPythonHelper.newFolderInTree",
-        "title": "MicroPython Helper: New Folder Here",
+        "command": "microPythonWorkBench.newFolderInTree",
+        "title": "MicroPython WorkBench: New Folder Here",
         "icon": "$(new-folder)"
       },
       {
-        "command": "microPythonHelper.renameNode",
-        "title": "MicroPython Helper: Rename File/Folder",
+        "command": "microPythonWorkBench.renameNode",
+        "title": "MicroPython WorkBench: Rename File/Folder",
         "icon": "$(edit)"
       },
       {
-        "command": "microPythonHelper.pickPort",
-        "title": "MicroPython Helper: Select Serial Port",
+        "command": "microPythonWorkBench.pickPort",
+        "title": "MicroPython WorkBench: Select Serial Port",
         "icon": "$(plug)"
       },
       {
-        "command": "microPythonHelper.refreshPorts",
-        "title": "MicroPython Helper: Refresh Ports",
+        "command": "microPythonWorkBench.refreshPorts",
+        "title": "MicroPython WorkBench: Refresh Ports",
         "icon": "$(refresh)"
       },
       {
-        "command": "microPythonHelper.setPort",
-        "title": "MicroPython Helper: Use This Port"
+        "command": "microPythonWorkBench.setPort",
+        "title": "MicroPython WorkBench: Use This Port"
       },
       {
-        "command": "microPythonHelper.mkdir",
-        "title": "MicroPython Helper: New Folder"
+        "command": "microPythonWorkBench.mkdir",
+        "title": "MicroPython WorkBench: New Folder"
       },
       {
-        "command": "microPythonHelper.openSerial",
-        "title": "MicroPython Helper: Open Serial Monitor",
+        "command": "microPythonWorkBench.openSerial",
+        "title": "MicroPython WorkBench: Open Serial Monitor",
         "icon": "$(terminal)"
       },
       {
-        "command": "microPythonHelper.openRepl",
-        "title": "MicroPython Helper: Open REPL",
+        "command": "microPythonWorkBench.openRepl",
+        "title": "MicroPython WorkBench: Open REPL",
         "icon": "$(terminal)"
       },
       {
-        "command": "microPythonHelper.runActiveFile",
-        "title": "MicroPython Helper: Run Active File",
+        "command": "microPythonWorkBench.runActiveFile",
+        "title": "MicroPython WorkBench: Run Active File",
         "icon": "$(play)"
       },
       {
-        "command": "microPythonHelper.stop",
-        "title": "MicroPython Helper: Stop (Ctrl-C/A/D)",
+        "command": "microPythonWorkBench.stop",
+        "title": "MicroPython WorkBench: Stop (Ctrl-C/A/D)",
         "icon": "$(debug-stop)"
       },
       {
-        "command": "microPythonHelper.softReset",
-        "title": "MicroPython Helper: Soft Reset (Ctrl-D)",
+        "command": "microPythonWorkBench.softReset",
+        "title": "MicroPython WorkBench: Soft Reset (Ctrl-D)",
         "icon": "$(debug-restart)"
       },
       {
-        "command": "microPythonHelper.syncBaseline",
-        "title": "MicroPython Helper: Sync all files (Local → Board)",
+        "command": "microPythonWorkBench.syncBaseline",
+        "title": "MicroPython WorkBench: Sync all files (Local → Board)",
         "icon": "$(cloud-upload)"
       },
       {
-        "command": "microPythonHelper.checkDiffs",
-        "title": "MicroPython Helper: Check files differences",
+        "command": "microPythonWorkBench.checkDiffs",
+        "title": "MicroPython WorkBench: Check files differences",
         "icon": "$(diff)"
       },
       {
-        "command": "microPythonHelper.syncDiffsLocalToBoard",
-        "title": "MicroPython Helper: Sync changed Files Local → Board",
+        "command": "microPythonWorkBench.syncDiffsLocalToBoard",
+        "title": "MicroPython WorkBench: Sync changed Files Local → Board",
         "icon": "$(export)"
       },
       {
-        "command": "microPythonHelper.syncDiffsBoardToLocal",
-        "title": "MicroPython Helper: Sync changed Files Board → Local",
+        "command": "microPythonWorkBench.syncDiffsBoardToLocal",
+        "title": "MicroPython WorkBench: Sync changed Files Board → Local",
         "icon": "$(import)"
       },
       {
-        "command": "microPythonHelper.syncBaselineFromBoard",
-        "title": "MicroPython Helper: Sync all files (Board → Local)",
+        "command": "microPythonWorkBench.syncBaselineFromBoard",
+        "title": "MicroPython WorkBench: Sync all files (Board → Local)",
         "icon": "$(cloud-download)"
       },
       {
-        "command": "microPythonHelper.serialSendCtrlC",
-        "title": "MicroPython Helper: Interrupt (Ctrl-C, Ctrl-B)",
+        "command": "microPythonWorkBench.serialSendCtrlC",
+        "title": "MicroPython WorkBench: Interrupt (Ctrl-C, Ctrl-B)",
         "icon": "$(debug-pause)"
       },
       {
-        "command": "microPythonHelper.openFileFromLocal",
-        "title": "MicroPython Helper: Open File from Local (default)",
+        "command": "microPythonWorkBench.openFileFromLocal",
+        "title": "MicroPython WorkBench: Open File from Local (default)",
         "icon": "$(file-directory)"
       },
       {
-        "command": "microPythonHelper.syncFileLocalToBoard",
-        "title": "MicroPython Helper: Sync File Local → Board",
+        "command": "microPythonWorkBench.syncFileLocalToBoard",
+        "title": "MicroPython WorkBench: Sync File Local → Board",
         "icon": "$(cloud-upload)"
       },
       {
-        "command": "microPythonHelper.syncFileBoardToLocal",
-        "title": "MicroPython Helper: Sync File Board → Local",
+        "command": "microPythonWorkBench.syncFileBoardToLocal",
+        "title": "MicroPython WorkBench: Sync File Board → Local",
         "icon": "$(cloud-download)"
       },
       {
-        "command": "microPythonHelper.delete",
-        "title": "MicroPython Helper: Delete from Board"
+        "command": "microPythonWorkBench.delete",
+        "title": "MicroPython WorkBench: Delete from Board"
       },
       {
-        "command": "microPythonHelper.deleteBoardAndLocal",
-        "title": "MicroPython Helper: Delete from Board and Local",
+        "command": "microPythonWorkBench.deleteBoardAndLocal",
+        "title": "MicroPython WorkBench: Delete from Board and Local",
         "icon": {
           "light": "./media/trash-red.svg",
           "dark": "./media/trash-red.svg"
         }
       },
       {
-        "command": "microPythonHelper.runFromView",
-        "title": "MicroPython Helper: Run Command (View Wrapper)"
+        "command": "microPythonWorkBench.runFromView",
+        "title": "MicroPython WorkBench: Run Command (View Wrapper)"
       },
       {
-        "command": "microPythonHelper.syncBaselineFromView",
-        "title": "MicroPython Helper: Sync all files (Local → Board) (View)",
+        "command": "microPythonWorkBench.syncBaselineFromView",
+        "title": "MicroPython WorkBench: Sync all files (Local → Board) (View)",
         "icon": "$(cloud-upload)"
       },
       {
-        "command": "microPythonHelper.syncBaselineFromBoardFromView",
-        "title": "MicroPython Helper: Sync all files (Board → Local) (View)",
+        "command": "microPythonWorkBench.syncBaselineFromBoardFromView",
+        "title": "MicroPython WorkBench: Sync all files (Board → Local) (View)",
         "icon": "$(cloud-download)"
       },
       {
-        "command": "microPythonHelper.checkDiffsFromView",
-        "title": "MicroPython Helper: Check files differences (View)",
+        "command": "microPythonWorkBench.checkDiffsFromView",
+        "title": "MicroPython WorkBench: Check files differences (View)",
         "icon": "$(diff)"
       },
       {
-        "command": "microPythonHelper.syncDiffsLocalToBoardFromView",
-        "title": "MicroPython Helper: Sync changed Files Local → Board (View)",
+        "command": "microPythonWorkBench.syncDiffsLocalToBoardFromView",
+        "title": "MicroPython WorkBench: Sync changed Files Local → Board (View)",
         "icon": "$(cloud-upload)"
       },
       {
-        "command": "microPythonHelper.syncDiffsBoardToLocalFromView",
-        "title": "MicroPython Helper: Sync changed Files Board → Local (View)",
+        "command": "microPythonWorkBench.syncDiffsBoardToLocalFromView",
+        "title": "MicroPython WorkBench: Sync changed Files Board → Local (View)",
         "icon": "$(cloud-download)"
       },
       {
-        "command": "microPythonHelper.runActiveFileFromView",
-        "title": "MicroPython Helper: Run Active File (View)",
+        "command": "microPythonWorkBench.runActiveFileFromView",
+        "title": "MicroPython WorkBench: Run Active File (View)",
         "icon": "$(play)"
       },
       {
-        "command": "microPythonHelper.openReplFromView",
-        "title": "MicroPython Helper: Open REPL (View)",
+        "command": "microPythonWorkBench.openReplFromView",
+        "title": "MicroPython WorkBench: Open REPL (View)",
         "icon": "$(terminal)"
       },
       {
-        "command": "microPythonHelper.deleteAllBoard",
-        "title": "MicroPython Helper: Delete ALL files on Board",
+        "command": "microPythonWorkBench.deleteAllBoard",
+        "title": "MicroPython WorkBench: Delete ALL files on Board",
         "icon": {
           "light": "./media/trash-red.svg",
           "dark": "./media/trash-red.svg"
         }
       },
       {
-        "command": "microPythonHelper.deleteAllBoardFromView",
-        "title": "MicroPython Helper: Delete ALL files on Board (View)",
+        "command": "microPythonWorkBench.deleteAllBoardFromView",
+        "title": "MicroPython WorkBench: Delete ALL files on Board (View)",
         "icon": {
           "light": "./media/trash-red.svg",
           "dark": "./media/trash-red.svg"
         }
       },
       {
-        "command": "microPythonHelper.toggleWorkspaceAutoSync",
-        "title": "MicroPython Helper: Toggle workspace Auto-Sync on Save"
+        "command": "microPythonWorkBench.toggleWorkspaceAutoSync",
+        "title": "MicroPython WorkBench: Toggle workspace Auto-Sync on Save"
       }
     ],
     "menus": {
       "view/title": [
         {
-          "command": "microPythonHelper.syncBaselineFromView",
-          "when": "view == microPythonHelperSyncView",
+          "command": "microPythonWorkBench.syncBaselineFromView",
+          "when": "view == microPythonWorkBenchSyncView",
           "group": "navigation@0"
         },
         {
-          "command": "microPythonHelper.syncBaselineFromBoardFromView",
-          "when": "view == microPythonHelperSyncView",
+          "command": "microPythonWorkBench.syncBaselineFromBoardFromView",
+          "when": "view == microPythonWorkBenchSyncView",
           "group": "navigation@1"
         },
         {
-          "command": "microPythonHelper.checkDiffsFromView",
-          "when": "view == microPythonHelperSyncView",
+          "command": "microPythonWorkBench.checkDiffsFromView",
+          "when": "view == microPythonWorkBenchSyncView",
           "group": "navigation@3"
         },
         {
-          "command": "microPythonHelper.syncDiffsLocalToBoardFromView",
-          "when": "view == microPythonHelperSyncView",
+          "command": "microPythonWorkBench.syncDiffsLocalToBoardFromView",
+          "when": "view == microPythonWorkBenchSyncView",
           "group": "navigation@4"
         },
         {
-          "command": "microPythonHelper.syncDiffsBoardToLocalFromView",
-          "when": "view == microPythonHelperSyncView",
+          "command": "microPythonWorkBench.syncDiffsBoardToLocalFromView",
+          "when": "view == microPythonWorkBenchSyncView",
           "group": "navigation@5"
         },
         {
-          "command": "microPythonHelper.deleteAllBoardFromView",
-          "when": "view == microPythonHelperSyncView",
+          "command": "microPythonWorkBench.deleteAllBoardFromView",
+          "when": "view == microPythonWorkBenchSyncView",
           "group": "navigation@9"
         },
         {
-          "command": "microPythonHelper.runActiveFileFromView",
-          "when": "view == microPythonHelperActionsView",
+          "command": "microPythonWorkBench.runActiveFileFromView",
+          "when": "view == microPythonWorkBenchActionsView",
           "group": "navigation@0"
         },
         {
-          "command": "microPythonHelper.openReplFromView",
-          "when": "view == microPythonHelperActionsView",
+          "command": "microPythonWorkBench.openReplFromView",
+          "when": "view == microPythonWorkBenchActionsView",
           "group": "navigation@1"
         },
         {
-          "command": "microPythonHelper.serialSendCtrlC",
-          "when": "view == microPythonHelperActionsView",
+          "command": "microPythonWorkBench.serialSendCtrlC",
+          "when": "view == microPythonWorkBenchActionsView",
           "group": "navigation@2"
         },
         {
-          "command": "microPythonHelper.refresh",
-          "when": "view == microPythonHelperFsView",
+          "command": "microPythonWorkBench.refresh",
+          "when": "view == microPythonWorkBenchFsView",
           "group": "navigation@0"
         },
         {
-          "command": "microPythonHelper.pickPort",
-          "when": "view == microPythonHelperFsView",
+          "command": "microPythonWorkBench.pickPort",
+          "when": "view == microPythonWorkBenchFsView",
           "group": "navigation@1"
         },
         {
-          "command": "microPythonHelper.checkDiffsFromView",
-          "when": "view == microPythonHelperSyncView",
+          "command": "microPythonWorkBench.checkDiffsFromView",
+          "when": "view == microPythonWorkBenchSyncView",
           "group": "navigation@3"
         }
       ],
       "view/item/context": [
         {
-          "command": "microPythonHelper.renameNode",
-          "when": "view == microPythonHelperFsView && (viewItem == file || viewItem == dir)",
+          "command": "microPythonWorkBench.renameNode",
+          "when": "view == microPythonWorkBenchFsView && (viewItem == file || viewItem == dir)",
           "group": "2_edit@1"
         },
         {
-          "command": "microPythonHelper.openFile",
-          "when": "view == microPythonHelperFsView && viewItem == file",
+          "command": "microPythonWorkBench.openFile",
+          "when": "view == microPythonWorkBenchFsView && viewItem == file",
           "group": "1_open@1"
         },
         {
-          "command": "microPythonHelper.openFileFromLocal",
-          "when": "view == microPythonHelperFsView && viewItem == file",
+          "command": "microPythonWorkBench.openFileFromLocal",
+          "when": "view == microPythonWorkBenchFsView && viewItem == file",
           "group": "1_open@2"
         },
         {
-          "command": "microPythonHelper.syncFileLocalToBoard",
-          "when": "view == microPythonHelperFsView && viewItem == file",
+          "command": "microPythonWorkBench.syncFileLocalToBoard",
+          "when": "view == microPythonWorkBenchFsView && viewItem == file",
           "group": "2_sync@1"
         },
         {
-          "command": "microPythonHelper.syncFileBoardToLocal",
-          "when": "view == microPythonHelperFsView && viewItem == file",
+          "command": "microPythonWorkBench.syncFileBoardToLocal",
+          "when": "view == microPythonWorkBenchFsView && viewItem == file",
           "group": "2_sync@2"
         },
         {
-          "command": "microPythonHelper.newFileInTree",
-          "when": "view == microPythonHelperFsView && (viewItem == dir || viewItem == file)",
+          "command": "microPythonWorkBench.newFileInTree",
+          "when": "view == microPythonWorkBenchFsView && (viewItem == dir || viewItem == file)",
           "group": "0_create@0"
         },
         {
-          "command": "microPythonHelper.newFolderInTree",
-          "when": "view == microPythonHelperFsView && (viewItem == dir || viewItem == file)",
+          "command": "microPythonWorkBench.newFolderInTree",
+          "when": "view == microPythonWorkBenchFsView && (viewItem == dir || viewItem == file)",
           "group": "0_create@1"
         },
         {
-          "command": "microPythonHelper.delete",
-          "when": "view == microPythonHelperFsView && (viewItem == file || viewItem == dir)",
+          "command": "microPythonWorkBench.delete",
+          "when": "view == microPythonWorkBenchFsView && (viewItem == file || viewItem == dir)",
           "group": "3_delete@1"
         },
         {
-          "command": "microPythonHelper.deleteBoardAndLocal",
-          "when": "view == microPythonHelperFsView && (viewItem == file || viewItem == dir)",
+          "command": "microPythonWorkBench.deleteBoardAndLocal",
+          "when": "view == microPythonWorkBenchFsView && (viewItem == file || viewItem == dir)",
           "group": "3_delete@2"
         },
         {
-          "command": "microPythonHelper.newFileBoardAndLocal",
-          "when": "view == microPythonHelperFsView && !viewItem",
+          "command": "microPythonWorkBench.newFileBoardAndLocal",
+          "when": "view == microPythonWorkBenchFsView && !viewItem",
           "group": "0_create@0"
         },
         {
-          "command": "microPythonHelper.newFileInTree",
-          "when": "view == microPythonHelperFsView && !viewItem",
+          "command": "microPythonWorkBench.newFileInTree",
+          "when": "view == microPythonWorkBenchFsView && !viewItem",
           "group": "0_create@1"
         },
         {
-          "command": "microPythonHelper.newFolderInTree",
-          "when": "view == microPythonHelperFsView && !viewItem",
+          "command": "microPythonWorkBench.newFolderInTree",
+          "when": "view == microPythonWorkBenchFsView && !viewItem",
           "group": "0_create@2"
         }
       ]
     },
     "configuration": {
       "type": "object",
-      "title": "MicroPython Helper",
+      "title": "MicroPython WorkBench",
       "properties": {
-        "microPythonHelper.autoSyncOnSave": {
+        "microPythonWorkBench.autoSyncOnSave": {
           "type": "boolean",
           "default": false,
           "description": "Auto-sync on save: when enabled, saving a local file also uploads it to the board; when disabled, only saves locally. Per-workspace override available in .mpystudio/config.json."
         },
-        "microPythonHelper.connect": {
+        "microPythonWorkBench.connect": {
           "type": "string",
           "default": "auto",
           "description": "Serial device (e.g. auto, /dev/ttyUSB0, COM3)"
         },
-        "microPythonHelper.serialAutoSuspend": {
+        "microPythonWorkBench.serialAutoSuspend": {
           "type": "boolean",
           "default": true,
           "description": "Automatically close the REPL terminal before file ops and reopen after."
         },
-        "microPythonHelper.interruptOnConnect": {
+        "microPythonWorkBench.interruptOnConnect": {
           "type": "boolean",
           "default": true,
           "description": "On opening the REPL, send Ctrl-C to interrupt any running program."
         },
-        "microPythonHelper.strictConnect": {
+        "microPythonWorkBench.strictConnect": {
           "type": "boolean",
           "default": true,
           "description": "Before opening REPL, perform a strict handshake (reset + quick check + retry) to ensure prompt like Thonny."
         },
-        "microPythonHelper.preListDelayMs": {
+        "microPythonWorkBench.preListDelayMs": {
           "type": "number",
           "default": 150,
           "description": "Delay (ms) before listing after interrupt/reset to allow OS/device to settle."
         },
-        "microPythonHelper.rootPath": {
+        "microPythonWorkBench.rootPath": {
           "type": "string",
           "default": "/",
           "description": "Root path to show on device (e.g. /, /lib)"
         },
-        "microPythonHelper.usePyRawList": {
+        "microPythonWorkBench.usePyRawList": {
           "type": "boolean",
           "default": false,
           "description": "List directories using a Python raw REPL script (requires python3 + mpremote)."
         },
-        "microPythonHelper.baudRate": {
+        "microPythonWorkBench.baudRate": {
           "type": "number",
           "default": 115200,
           "description": "Serial baud rate for UART bridges (ignored on native USB CDC). Try 921600 or 1500000 if your board/adapter supports it."
         },
-        "microPythonHelper.pythonPath": {
+        "microPythonWorkBench.pythonPath": {
           "type": "string",
           "default": "",
           "description": "Override Python interpreter path. Leave empty to use VS Code's configured Python interpreter."

@@ -251,7 +251,7 @@ const TREE_CACHE_DURATION = 30000; // 30 seconds
 // Populate the global cache with complete file tree
 async function populateFileTreeCache(): Promise<void> {
   try {
-    const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+    const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
     console.log(`[DEBUG] populateFileTreeCache: Fetching complete file tree`);
     const { stdout } = await runMpremote(["connect", connect, "fs", "tree"], { retryOnFailure: true });
 
@@ -366,7 +366,7 @@ export async function refreshFileTreeCache(): Promise<void> {
 // Debug function to manually test tree parsing
 export async function debugTreeParsing(): Promise<void> {
   try {
-    const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+    const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
     console.log(`[DEBUG] debugTreeParsing: Testing tree command manually`);
 
     // Get raw tree output
@@ -401,7 +401,7 @@ export async function debugTreeParsing(): Promise<void> {
 // Debug function to check filesystem status and read-only issues
 export async function debugFilesystemStatus(): Promise<void> {
   try {
-    const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+    const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
     console.log(`[DEBUG] debugFilesystemStatus: Checking filesystem status`);
 
     // Check root filesystem stat
@@ -763,7 +763,7 @@ function parseTreeForPath(treeOutput: string, targetPath: string): { name: strin
 }
 
 export async function lsTyped(p: string): Promise<{ name: string; isDir: boolean }[]> {
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   console.log(`[DEBUG] lsTyped: Getting entries for path ${p}`);
 
   try {
@@ -872,7 +872,7 @@ export async function listSerialPorts(): Promise<{port: string, name: string}[]>
 }
 
 export async function mkdir(p: string): Promise<void> {
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   if (!connect || connect === "auto") throw new Error("Select a specific serial port first");
 
   // Get connection info for optimization
@@ -892,7 +892,7 @@ export async function mkdir(p: string): Promise<void> {
 }
 
 export async function cpFromDevice(devicePath: string, localPath: string): Promise<void> {
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   if (!connect || connect === "auto") throw new Error("Select a specific serial port first");
 
   // Get connection info for optimization
@@ -923,7 +923,7 @@ export async function cpFromDevice(devicePath: string, localPath: string): Promi
 }
 
 export async function cpToDevice(localPath: string, devicePath: string): Promise<void> {
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   if (!connect || connect === "auto") throw new Error("Select a specific serial port first");
 
   // Get connection info for optimization
@@ -1078,7 +1078,7 @@ export async function cpToDevice(localPath: string, devicePath: string): Promise
 }
 
 export async function uploadReplacing(localPath: string, devicePath: string): Promise<void> {
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   if (!connect || connect === "auto") throw new Error("Select a specific serial port first");
 
   // Get connection info for optimization
@@ -1163,7 +1163,7 @@ export async function uploadReplacing(localPath: string, devicePath: string): Pr
 }
 
 export async function deleteFile(p: string): Promise<void> {
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   if (!connect || connect === "auto") throw new Error("Select a specific serial port first");
   const pythonCode = `import os; os.remove('${p}')`;
   await runMpremote(["connect", connect, "exec", pythonCode]);
@@ -1221,7 +1221,7 @@ export async function deleteDirectoryRecursive(p: string, connect: string): Prom
 }
 
 export async function deleteAny(p: string): Promise<void> {
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   if (!connect || connect === "auto") throw new Error("Select a specific serial port first");
 
   // Get connection info for optimization
@@ -1279,7 +1279,7 @@ export async function deleteFolderRecursive(p: string): Promise<void> {
 }
 
 export async function fileExists(p: string): Promise<boolean> {
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   if (!connect || connect === "auto") throw new Error("Select a specific serial port first");
 
   try {
@@ -1308,7 +1308,7 @@ export async function fileExists(p: string): Promise<boolean> {
 
 // Check file existence using sha256sum command (more reliable for detecting missing files)
 export async function fileExistsSha256(p: string): Promise<boolean> {
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   if (!connect || connect === "auto") throw new Error("Select a specific serial port first");
 
   try {
@@ -1345,7 +1345,7 @@ export async function fileExistsSha256(p: string): Promise<boolean> {
 }
 
 export async function getFileInfo(p: string): Promise<{mode: number, size: number, isDir: boolean, isReadonly: boolean} | null> {
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   if (!connect || connect === "auto") throw new Error("Select a specific serial port first");
 
   try {
@@ -1381,7 +1381,7 @@ export async function getFileInfo(p: string): Promise<{mode: number, size: numbe
 }
 
 export async function deleteAllInPath(rootPath: string): Promise<{deleted: string[], errors: string[], deleted_count?: number, error_count?: number}> {
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   if (!connect || connect === "auto") throw new Error("Select a specific serial port first");
 
   // Get connection info for optimization
@@ -1447,7 +1447,7 @@ export async function deleteAllInPath(rootPath: string): Promise<{deleted: strin
 }
 
 export async function runFile(localPath: string): Promise<{ stdout: string; stderr: string }>{
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   if (!connect || connect === "auto") throw new Error("Select a specific serial port first");
   const deviceArg = localPath && localPath !== "/" ? `"${localPath}"` : "/";
   const { stdout } = await runMpremote(["connect", connect, "fs", "run", deviceArg]);
@@ -1455,7 +1455,7 @@ export async function runFile(localPath: string): Promise<{ stdout: string; stde
 }
 
 export async function reset(): Promise<void> {
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   if (!connect || connect === "auto") return;
 
   try {
@@ -1469,7 +1469,7 @@ export async function reset(): Promise<void> {
 }
 
 export async function listTreeStats(root: string): Promise<Array<{ path: string; isDir: boolean; size: number; mtime: number }>> {
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   if (!connect || connect === "auto") throw new Error("Select a specific serial port first");
 
   // Get connection info for optimization
@@ -1572,7 +1572,7 @@ export function cancelAll(): void {
 // Health check function to verify connection status
 export async function healthCheck(port?: string): Promise<{ healthy: boolean; port: string; responseTime?: number }> {
   const startTime = Date.now();
-  const connect = port || normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = port || normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
 
   try {
     // Quick health check using fs tree to verify connection
@@ -1606,7 +1606,7 @@ export async function getBoardFilesAndSizes(rootPath: string = "/"): Promise<{
   files: Map<string, { size: number; isDir: boolean }>;
   directories: Set<string>;
 }> {
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   if (!connect || connect === "auto") throw new Error("Select a specific serial port first");
 
   try {
@@ -1713,7 +1713,7 @@ export async function getBoardFileSizes(rootPath: string = "/"): Promise<Map<str
 }
 
 export async function mvOnDevice(src: string, dst: string): Promise<void> {
-  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonHelper.connect", "auto") || "auto");
+  const connect = normalizeConnect(vscode.workspace.getConfiguration().get<string>("microPythonWorkBench.connect", "auto") || "auto");
   if (!connect || connect === "auto") throw new Error("Select a specific serial port first");
 
   try {
